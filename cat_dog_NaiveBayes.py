@@ -55,7 +55,7 @@ def carregar_e_processar_dados(caminho_csv, pasta_base):
     return np.array(X_list), np.array(y_list)
 
 #Caminhos
-pasta_base = r"c:\Users\Dog\Documents\dogcat"
+pasta_base = r"./cat_dog_files"
 csv_treino = os.path.join(pasta_base, "train.csv")
 csv_teste = os.path.join(pasta_base, "val.csv")
 
@@ -79,13 +79,13 @@ nb.fit(X_treino_norm, y_treino)
 y_pred_nb = nb.predict(X_teste_norm)
 
 #Calculando métricas
-print("\nAcurácia Naive Bayes:", accuracy_score(y_teste, y_pred_nb))
-print("\nPrecisão Naive Bayes:", precision_score(y_teste, y_pred_nb))
-print("\nRecall Naive Bayes:", recall_score(y_teste, y_pred_nb))
-print("\nF1-Score Naive Bayes:", f1_score(y_teste, y_pred_nb))
+print("\nAcurácia Naive Bayes cat_dog:", accuracy_score(y_teste, y_pred_nb))
+print("\nPrecisão Naive Bayes cat_dog:", precision_score(y_teste, y_pred_nb))
+print("\nRecall Naive Bayes cat_dog:", recall_score(y_teste, y_pred_nb))
+print("\nF1-Score Naive Bayes cat_dog:", f1_score(y_teste, y_pred_nb))
 
 #Relatorio
-print("Relatório Naive Bayes:\n", classification_report(y_teste, y_pred_nb))
+print("Relatório Naive Bayes cat_dog:\n", classification_report(y_teste, y_pred_nb))
 
 #Matriz de Confusão
 matriz = confusion_matrix(y_teste, y_pred_nb)

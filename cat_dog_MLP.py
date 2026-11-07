@@ -55,7 +55,7 @@ def carregar_e_processar_dados(caminho_csv, pasta_base):
     return np.array(X_list), np.array(y_list)
 
 #Caminhos
-pasta_base = r"c:\Users\Dog\Documents\dogcat"
+pasta_base = r".\cat_dog_files"
 csv_treino = os.path.join(pasta_base, "train.csv")
 csv_teste = os.path.join(pasta_base, "val.csv")
 
@@ -78,13 +78,13 @@ mlp.fit(X_treino_norm, y_treino)
 y_pred_mlp = mlp.predict(X_teste_norm)
 
 #Calculando métricas
-print("\nAcurácia MLP:", accuracy_score(y_teste, y_pred_mlp))
-print("\nPrecisão MLP:", precision_score(y_teste, y_pred_mlp))
-print("\nRecall MLP:", recall_score(y_teste, y_pred_mlp))
-print("\nF1-Score MLP:", f1_score(y_teste, y_pred_mlp))
+print("\nAcurácia MLP cat_dog:", accuracy_score(y_teste, y_pred_mlp))
+print("\nPrecisão MLP cat_dog:", precision_score(y_teste, y_pred_mlp))
+print("\nRecall MLP cat_dog:", recall_score(y_teste, y_pred_mlp))
+print("\nF1-Score MLP cat_dog:", f1_score(y_teste, y_pred_mlp))
 
 #Relatorio
-print("Relatório MLP:\n", classification_report(y_teste, y_pred_mlp))
+print("Relatório MLP cat_dog:\n", classification_report(y_teste, y_pred_mlp))
 
 #Matriz de Confusão
 matriz = confusion_matrix(y_teste, y_pred_mlp)
