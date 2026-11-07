@@ -54,43 +54,52 @@ def carregar_e_processar_dados(caminho_csv, pasta_base):
 
     return np.array(X_list), np.array(y_list)
 
-#Caminhos
-pasta_base = r"./cat_dog_files"
-csv_treino = os.path.join(pasta_base, "train.csv")
-csv_teste = os.path.join(pasta_base, "val.csv")
 
-#Lendo os dados de treino
-X_treino, y_treino = carregar_e_processar_dados(csv_treino, pasta_base)
 
-#Lendo os dados de teste
-X_teste, y_teste = carregar_e_processar_dados(csv_teste, pasta_base)
+def cat_dog_NaiveBayes(pasta_base, csv_treino, csv_teste):
+    #Lendo os dados de treino
+    X_treino, y_treino = carregar_e_processar_dados(csv_treino, pasta_base)
+    
+    #Lendo os dados de teste
+    X_teste, y_teste = carregar_e_processar_dados(csv_teste, pasta_base)
+    
+    #Normalizacao dos dados
+    scaler = StandardScaler()
+    X_treino_norm = scaler.fit_transform(X_treino)
+    X_teste_norm = scaler.transform(X_teste)
+    
+    #Treinando o Naive Bayes
+    #GaussianNB é utilizado pois os dados de pixel padronizados são variáveis contínuas
+    nb = GaussianNB()
+    nb.fit(X_treino_norm, y_treino)
+    
+    #Testando o modelo
+    y_pred_nb = nb.predict(X_teste_norm)
 
-#Normalizacao dos dados
-scaler = StandardScaler()
-X_treino_norm = scaler.fit_transform(X_treino)
-X_teste_norm = scaler.transform(X_teste)
 
-#Treinando o Naive Bayes
-#GaussianNB é utilizado pois os dados de pixel padronizados são variáveis contínuas
-nb = GaussianNB()
-nb.fit(X_treino_norm, y_treino)
-
-#Testando o modelo
-y_pred_nb = nb.predict(X_teste_norm)
-
-#Calculando métricas
-print("\nAcurácia Naive Bayes cat_dog:", accuracy_score(y_teste, y_pred_nb))
-print("\nPrecisão Naive Bayes cat_dog:", precision_score(y_teste, y_pred_nb))
-print("\nRecall Naive Bayes cat_dog:", recall_score(y_teste, y_pred_nb))
-print("\nF1-Score Naive Bayes cat_dog:", f1_score(y_teste, y_pred_nb))
-
-#Relatorio
-print("Relatório Naive Bayes cat_dog:\n", classification_report(y_teste, y_pred_nb))
-
-#Matriz de Confusão
-matriz = confusion_matrix(y_teste, y_pred_nb)
-disp = ConfusionMatrixDisplay(confusion_matrix=matriz)
-disp.plot(cmap='Oranges')
-
-plt.title("Matriz de Confusão - Naive Bayes (Cats & Dogs)")
-plt.show()
+    #Calculando métricas
+    acuracia = accuracy_score(y_teste, y_pred_nb) 
+    precisao = precision_score(y_teste, y_pred_nb)
+    recall = recall_score(y_teste,  y_pred_nb)
+    f1 = f1_score(y_teste, y_pred_nb)
+    print("================================================")
+    print("DATASET: CATS AND DOGS | MODELO: NAIVE BAYES")
+    print("================================================")
+    print("MÉTRICAS:")
+    print("\nAcurácia Naive Bayes cat_dog:", acuracia)
+    print("\nPrecisão Naive Bayes no cat_dog:", precisao)
+    print("\nRecall Naive Bayes no cat_dog:", recall)
+    print("\nF1-Score Naive Bayes no cat_dog:", f1)
+    
+    #Relatorio
+    print("Relatório Naive Bayes cat_dog:\n", classification_report(y_teste, y_pred_nb))
+    
+    #Matriz de Confusão
+    matriz = confusion_matrix(y_teste, y_pred_nb)
+    disp = ConfusionMatrixDisplay(confusion_matrix=matriz)
+    disp.plot(cmap='Oranges')
+    
+    plt.title("Matriz de Confusão - Naive Bayes (Cats & Dogs)")
+    plt.show()
+    print("\n\n\n\n")
+    return acuracia, precisao, recall, f1
