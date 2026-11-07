@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 #Lendo a base
-df = pd.read_csv(r"C:\Users\roger\Downloads\Dry_Bean.csv")
+df = pd.read_csv(r"./dry_bean_files/dry_bean.csv")
 
 #Mapeando o gabarito(target) para números 
 df['Class'] = df['Class'].map({
@@ -63,20 +63,19 @@ y_predicao = modelo.predict(x_teste)
 
 
 # Calculando métricas
-print("Acurácia:", accuracy_score(y_teste, y_predicao))
-print("Precisão:", precision_score(y_teste, y_predicao, average='weighted'))
-print("Recall:", recall_score(y_teste, y_predicao, average='weighted'))
-print("F1-Score:", f1_score(y_teste, y_predicao, average='weighted'))
+print("\nAcurácia Naive Bayes dry_bean:", accuracy_score(y_teste, y_predicao))
+print("\nPrecisão Naive Bayes dry_bean:", precision_score(y_teste, y_predicao, average='weighted'))
+print("\nRecall Naive Bayes dry_bean:", recall_score(y_teste, y_predicao, average='weighted'))
+print("\nF1-Score Naive Bayes dry_bean:", f1_score(y_teste, y_predicao, average='weighted'))
 
-# Relatório completo por classe
-print("\nRelatório de classificação:")
-print(classification_report(y_teste, y_predicao))
+# Relatório
+print("Relatório Naive Bayes dry_bean:\n", classification_report(y_teste, y_predicao))
 
 # Plotando a matriz de confusão
 matriz = confusion_matrix(y_teste, y_predicao)
 
 disp = ConfusionMatrixDisplay(confusion_matrix=matriz)
-disp.plot(cmap='Blues')
+disp.plot(cmap='Oranges')
 
-plt.title("Matriz de Confusão - Naive Bayes")
+plt.title("Matriz de Confusão - Naive Bayes (Dry Bean)")
 plt.show()
