@@ -19,7 +19,7 @@ from sklearn.metrics import (
 
 def dry_bean_MLP(csv_file):
     # Lendo a base
-    df = pd.read_csv(r"./dry_bean_files/Dry_Bean.csv")
+    df = pd.read_csv(csv_file)
     
     # Separando os dados de entrada (features) e o gabarito (target)
     features = [

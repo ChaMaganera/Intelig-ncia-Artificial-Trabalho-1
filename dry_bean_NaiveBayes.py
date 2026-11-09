@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 def dry_bean_NaiveBayes(csv_file):
     #Lendo a base
-    df = pd.read_csv(r"./dry_bean_files/dry_bean.csv")
+    df = pd.read_csv(csv_file)
     
     #Mapeando o gabarito(target) para números 
     df['Class'] = df['Class'].map({

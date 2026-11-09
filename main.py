@@ -6,7 +6,7 @@ from dry_bean_MLP import dry_bean_MLP
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import numpy as np
-    
+      
 cat_dog_diretorio_raiz = r"./cat_dog_files"
 cat_dog_treino = os.path.join(cat_dog_diretorio_raiz, "train.csv")
 cat_dog_teste = os.path.join(cat_dog_diretorio_raiz, "val.csv")
