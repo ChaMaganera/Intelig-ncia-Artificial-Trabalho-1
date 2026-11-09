@@ -2,7 +2,7 @@
 
 Trabalho 1 de Inteligência Artificial — Q3.2026.
 
-O projeto compara os modelos Naive Bayes e MLP nos conjuntos Cats and Dogs e Dry Bean. Os dados devem estar nas pastas `cat_dog_files` e `dry_bean_files`, na raiz do projeto.
+O projeto busca comparar os modelos Naive Bayes e MLP nos conjuntos Cats and Dogs e Dry Bean. Os dados devem estar nas pastas `cat_dog_files` e `dry_bean_files`, na raiz do projeto.
 
 ## Requisitos
 
