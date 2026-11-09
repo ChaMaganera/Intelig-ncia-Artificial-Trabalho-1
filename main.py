@@ -7,12 +7,14 @@ from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import numpy as np
       
-cat_dog_diretorio_raiz = r"./cat_dog_files"
+diretorio_projeto = os.path.dirname(os.path.abspath(__file__))
+
+cat_dog_diretorio_raiz = os.path.join(diretorio_projeto, "cat_dog_files")
 cat_dog_treino = os.path.join(cat_dog_diretorio_raiz, "train.csv")
 cat_dog_teste = os.path.join(cat_dog_diretorio_raiz, "val.csv")
 
-pasta_dry_bean = r"./dry_bean_files"
-csv_dry_bean = os.path.join(pasta_dry_bean, "dry_bean.csv")
+pasta_dry_bean = os.path.join(diretorio_projeto, "dry_bean_files")
+csv_dry_bean = os.path.join(pasta_dry_bean, "Dry_Bean.csv")
 
 df_modelos = [
     [cat_dog_diretorio_raiz, cat_dog_treino, cat_dog_teste],
@@ -88,4 +90,3 @@ def main():
     
 if __name__ == "__main__":
     gerar_grafico(resultados = main())
-

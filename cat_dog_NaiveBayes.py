@@ -61,7 +61,8 @@ def cat_dog_NaiveBayes(pasta_base, csv_treino, csv_teste):
     X_treino_norm = scaler.fit_transform(X_treino)
     X_teste_norm = scaler.transform(X_teste)
     
-    nb_modelo = GaussianNB(var_smoothing=10e-12)
+    #Hiper parâmetro var_smoothing
+    nb_modelo = GaussianNB(var_smoothing=10e-1)
     nb_modelo.fit(X_treino_norm, y_treino)
     
     # Testando o modelo
